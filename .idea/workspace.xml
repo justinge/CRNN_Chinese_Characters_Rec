@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3dd8186-18f0-4001-a98c-ee4c77327cec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common/check_img_and_txt.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/conver_to_label.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/config/OWN_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config/OWN_config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/config/alphabets.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config/alphabets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dataset/_own.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dataset/_own.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/360CC/crnn/2022-01-10-01-01/log/events.out.tfevents.1641747660.lap-justin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/360CC/crnn/2022-01-10-01-01/log/events.out.tfevents.1641747707.lap-justin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/OWN/crnn/2022-01-10-02-22/log/events.out.tfevents.1641752554.lap-justin" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +146,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641722620799</updated>
-      <workItem from="1641722622775" duration="23801000" />
+      <workItem from="1641722622775" duration="24589000" />
     </task>
     <servers />
   </component>
