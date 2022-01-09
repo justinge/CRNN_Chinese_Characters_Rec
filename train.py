@@ -23,7 +23,8 @@ def parse_arg():
     #
     # args = parser.parse_args()
     #  with open(args.cfg, 'r') as f:
-    cfg = "lib/config/360CC_config.yaml"
+    # cfg = "lib/config/360CC_config.yaml"
+    cfg = "lib/config/OWN_config.yaml"
     with open(cfg, 'r') as f:
         # config = yaml.load(f, Loader=yaml.FullLoader)
         config = yaml.load(f)
@@ -131,7 +132,7 @@ def main():
         pin_memory=config.PIN_MEMORY,
     )
 
-    best_acc = 0.5
+    best_acc = 0.0000001
     converter = utils.strLabelConverter(config.DATASET.ALPHABETS)
     for epoch in range(last_epoch, config.TRAIN.END_EPOCH):
         function.train(config, train_loader, train_dataset, converter, model, criterion, optimizer, device, epoch,

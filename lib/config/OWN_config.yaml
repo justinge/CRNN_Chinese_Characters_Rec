@@ -1,5 +1,5 @@
 GPUID: 0
-WORKERS: 1
+WORKERS: 4
 PRINT_FREQ: 10
 SAVE_FREQ: 10
 PIN_MEMORY: False
@@ -12,8 +12,10 @@ CUDNN:
 
 DATASET:
   DATASET: OWN
-  ROOT: "H:/DL-DATASET/360M/images"
-  JSON_FILE: {'train': 'lib/dataset/txt/train_own.txt', 'val': 'lib/dataset/txt/test_own.txt'}
+  # D:\BaiduNetdiskDownload\icdar2017rctw\recognition\train
+  ROOT: "D:/BaiduNetdiskDownload/icdar2017rctw/recognition/train"
+  JSON_FILE: { 'train': 'D:/BaiduNetdiskDownload/icdar2017rctw/recognition/contrain.txt', 'val': 'D:/BaiduNetdiskDownload/icdar2017rctw/recognition/contest.txt' }
+  CHAR_FILE: 'lib/dataset/txt/char_std_5990.txt'
   SCALE_FACTOR: 0.25
   ROT_FACTOR: 30
   STD: 0.193
@@ -21,31 +23,32 @@ DATASET:
   ALPHABETS: ''
 
 TRAIN:
-  BATCH_SIZE_PER_GPU: 32
+  BATCH_SIZE_PER_GPU: 128
   SHUFFLE: True
   BEGIN_EPOCH: 0
   END_EPOCH: 100
   RESUME:
-    IS_RESUME: False
-    FILE: ''
+    IS_RESUME: True
+    FILE: 'D:\code\python\CRNN_Chinese_Characters_Rec\output\OWN\crnn\2022-01-10-01-49\checkpoints\checkpoint_29_acc_0.0740.pth'
   OPTIMIZER: 'adam'
-  LR: 0.0001
+  LR: 0.001
+  #LR: 0.0
   WD: 0.0
-  LR_STEP: [60, 80]
+  LR_STEP: [ 60, 80 ]
   LR_FACTOR: 0.1
   MOMENTUM: 0.0
   NESTEROV: False
   RMSPROP_ALPHA:
   RMSPROP_CENTERED:
   FINETUNE:
-    IS_FINETUNE: true
+    IS_FINETUNE: True
     FINETUNE_CHECKPOINIT: 'output/checkpoints/mixed_second_finetune_acc_97P7.pth'
-    FREEZE: true
+    FREEZE: False
 
 TEST:
-  BATCH_SIZE_PER_GPU: 16
+  BATCH_SIZE_PER_GPU: 128
   SHUFFLE: True  # for random test rather than test on the whole validation set
-  NUM_TEST_BATCH: 1000
+  NUM_TEST_BATCH: 100
   NUM_TEST_DISP: 10
 
 MODEL:

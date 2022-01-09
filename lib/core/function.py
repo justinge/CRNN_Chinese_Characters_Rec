@@ -39,10 +39,8 @@ def train(config, train_loader, dataset, converter, model, criterion, optimizer,
     for i, (inp, idx) in enumerate(train_loader):
         # measure data time
         data_time.update(time.time() - end)
-
         labels = utils.get_batch_label(dataset, idx)
         inp = inp.to(device)
-
         # inference
         preds = model(inp).cpu()
 
