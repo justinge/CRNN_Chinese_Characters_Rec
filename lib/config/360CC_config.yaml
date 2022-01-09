@@ -1,5 +1,5 @@
 GPUID: 0
-WORKERS: 1
+WORKERS: 4
 PRINT_FREQ: 10
 SAVE_FREQ: 10
 PIN_MEMORY: False
@@ -12,9 +12,9 @@ CUDNN:
 
 DATASET:
   DATASET: 360CC
-  ROOT: "H:/DL-DATASET/360M/images"
+  ROOT: "D:/BaiduNetdiskDownload/public_data_51cto/SyntheticChineseStringDataset/SyntheticChineseStringDataset/images"
   CHAR_FILE: 'lib/dataset/txt/char_std_5990.txt'
-  JSON_FILE: {'train': 'lib/dataset/txt/train.txt', 'val': 'lib/dataset/txt/test.txt'}
+  JSON_FILE: {'train': "D:/BaiduNetdiskDownload/public_data_51cto/SyntheticChineseStringDataset/SyntheticChineseStringDataset/train.txt", 'val': "D:/BaiduNetdiskDownload/public_data_51cto/SyntheticChineseStringDataset/SyntheticChineseStringDataset/test.txt"}
 #  JSON_FILE: {'train': 'H:/DL-DATASET/360M/train.txt', 'val': 'H:/DL-DATASET/360M/test.txt'}
   SCALE_FACTOR: 0.25
   ROT_FACTOR: 30
@@ -23,7 +23,7 @@ DATASET:
   ALPHABETS: ''
 
 TRAIN:
-  BATCH_SIZE_PER_GPU: 32
+  BATCH_SIZE_PER_GPU: 64
   SHUFFLE: True
   BEGIN_EPOCH: 0
   END_EPOCH: 100

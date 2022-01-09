@@ -1,10 +1,12 @@
-from  __future__ import  absolute_import
+from __future__ import absolute_import
 import time
 import lib.utils.utils as utils
 import torch
 
+
 class AverageMeter(object):
     """Computes and stores the average and current value"""
+
     def __init__(self):
         self.val = 0
         self.avg = 0
@@ -24,8 +26,9 @@ class AverageMeter(object):
         self.count += n
         self.avg = self.sum / self.count
 
-def train(config, train_loader, dataset, converter, model, criterion, optimizer, device, epoch, writer_dict=None, output_dict=None):
 
+def train(config, train_loader, dataset, converter, model, criterion, optimizer, device, epoch, writer_dict=None,
+          output_dict=None):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
@@ -45,8 +48,9 @@ def train(config, train_loader, dataset, converter, model, criterion, optimizer,
 
         # compute loss
         batch_size = inp.size(0)
-        text, length = converter.encode(labels)                    # length = 一个batch中的总字符长度, text = 一个batch中的字符所对应的下标
-        preds_size = torch.IntTensor([preds.size(0)] * batch_size) # timestep * batchsize
+        text, length = converter.encode(labels)
+        # length = 一个batch中的总字符长度, text = 一个batch中的字符所对应的下标
+        preds_size = torch.IntTensor([preds.size(0)] * batch_size)  # timestep * batchsize
         loss = criterion(preds, text, preds_size, length)
 
         optimizer.zero_grad()
@@ -55,16 +59,16 @@ def train(config, train_loader, dataset, converter, model, criterion, optimizer,
 
         losses.update(loss.item(), inp.size(0))
 
-        batch_time.update(time.time()-end)
+        batch_time.update(time.time() - end)
         if i % config.PRINT_FREQ == 0:
             msg = 'Epoch: [{0}][{1}/{2}]\t' \
                   'Time {batch_time.val:.3f}s ({batch_time.avg:.3f}s)\t' \
                   'Speed {speed:.1f} samples/s\t' \
                   'Data {data_time.val:.3f}s ({data_time.avg:.3f}s)\t' \
                   'Loss {loss.val:.5f} ({loss.avg:.5f})\t'.format(
-                      epoch, i, len(train_loader), batch_time=batch_time,
-                      speed=inp.size(0)/batch_time.val,
-                      data_time=data_time, loss=losses)
+                epoch, i, len(train_loader), batch_time=batch_time,
+                speed=inp.size(0) / batch_time.val,
+                data_time=data_time, loss=losses)
             print(msg)
 
             if writer_dict:
@@ -77,7 +81,6 @@ def train(config, train_loader, dataset, converter, model, criterion, optimizer,
 
 
 def validate(config, val_loader, dataset, converter, model, criterion, device, epoch, writer_dict, output_dict):
-
     losses = AverageMeter()
     model.eval()
 

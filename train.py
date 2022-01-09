@@ -14,14 +14,17 @@ from lib.utils.utils import model_info
 
 from tensorboardX import SummaryWriter
 
+
 def parse_arg():
-    parser = argparse.ArgumentParser(description="train crnn")
-
-    parser.add_argument('--cfg', help='experiment configuration filename', required=True, type=str)
-
-    args = parser.parse_args()
-
-    with open(args.cfg, 'r') as f:
+    # parser = argparse.ArgumentParser(description="train crnn")
+    #
+    # parser.add_argument('--cfg', default="lib/config/360CC_config.yaml", help='experiment configuration filename',
+    #                     required=False, type=str)
+    #
+    # args = parser.parse_args()
+    #  with open(args.cfg, 'r') as f:
+    cfg = "lib/config/360CC_config.yaml"
+    with open(cfg, 'r') as f:
         # config = yaml.load(f, Loader=yaml.FullLoader)
         config = yaml.load(f)
         config = edict(config)
@@ -31,8 +34,8 @@ def parse_arg():
 
     return config
 
-def main():
 
+def main():
     # load config
     config = parse_arg()
 
@@ -70,7 +73,7 @@ def main():
     if isinstance(config.TRAIN.LR_STEP, list):
         lr_scheduler = torch.optim.lr_scheduler.MultiStepLR(
             optimizer, config.TRAIN.LR_STEP,
-            config.TRAIN.LR_FACTOR, last_epoch-1
+            config.TRAIN.LR_FACTOR, last_epoch - 1
         )
     else:
         lr_scheduler = torch.optim.lr_scheduler.StepLR(
@@ -131,11 +134,12 @@ def main():
     best_acc = 0.5
     converter = utils.strLabelConverter(config.DATASET.ALPHABETS)
     for epoch in range(last_epoch, config.TRAIN.END_EPOCH):
-
-        function.train(config, train_loader, train_dataset, converter, model, criterion, optimizer, device, epoch, writer_dict, output_dict)
+        function.train(config, train_loader, train_dataset, converter, model, criterion, optimizer, device, epoch,
+                       writer_dict, output_dict)
         lr_scheduler.step()
 
-        acc = function.validate(config, val_loader, val_dataset, converter, model, criterion, device, epoch, writer_dict, output_dict)
+        acc = function.validate(config, val_loader, val_dataset, converter, model, criterion, device, epoch,
+                                writer_dict, output_dict)
 
         is_best = acc > best_acc
         best_acc = max(acc, best_acc)
@@ -150,11 +154,11 @@ def main():
                 # "optimizer": optimizer.state_dict(),
                 # "lr_scheduler": lr_scheduler.state_dict(),
                 "best_acc": best_acc,
-            },  os.path.join(output_dict['chs_dir'], "checkpoint_{}_acc_{:.4f}.pth".format(epoch, acc))
+            }, os.path.join(output_dict['chs_dir'], "checkpoint_{}_acc_{:.4f}.pth".format(epoch, acc))
         )
 
     writer_dict['writer'].close()
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     main()

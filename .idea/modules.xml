@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/crnn.iml" filepath="$PROJECT_DIR$/.idea/crnn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CRNN_Chinese_Characters_Rec.iml" filepath="$PROJECT_DIR$/.idea/CRNN_Chinese_Characters_Rec.iml" />
     </modules>
   </component>
 </project>
